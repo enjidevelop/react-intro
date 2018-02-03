@@ -1,13 +1,12 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-class Container extends Component {
-    render() {
-        return (
-            <div className='container'>
-                {this.props.children}
-            </div>
-        );
-    }
-}
+const Container = ({
+    children,
+    ...props
+}) => (
+    <div className='container' {...props}>
+        {children}
+    </div>
+);
 
 export default Container;

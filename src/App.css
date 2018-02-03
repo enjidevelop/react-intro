@@ -1,9 +1,50 @@
 .App {
-    display: flex;
     height: 100vh;
-    background-color: #eee;
+    background-color: #000;
+    color: #fff;
+}
+
+input[type="text"] {
+    background: #000;
+    color: #fff;
+    padding: 10px;
+    border: 1px solid #fff;
+    transition: border-color .3s ease-in-out;
+    margin-right: 5px;
+}
+
+input[type="text"]:focus {
+    border-color: #ffdb4d;
+    outline: none;
+}
+
+button {
+    background: transparent;
+    border: 1px solid #fff;
+    color: #fff;
+    transition: border-color .3s ease-in-out;
+}
+
+button:focus {
+    border-color: #ffdb4d;
+    outline: none;
 }
 
 .container {
-    margin: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    height: 100%;
+}
+
+.form-row {
+    width: 50%;
+    display: flex; 
+    justify-content: center;
+}
+
+.result {
+    width: 50%;
+    text-align: center;
 }
