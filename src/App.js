@@ -1,26 +1,47 @@
 import React, { Component } from 'react';
 
 import './App.css';
-import {Input, Button, Container, Result} from './components';
+import {
+    Input,
+    Button,
+    Container,
+    Result,
+    Popup
+} from './components';
 
 class App extends Component {
     constructor() {
         super();
         this.state = {
-            value: ''
+            value: '',
+            openingPopup: false
         };
 
         this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+        this.resetOpeningPopup = this.resetOpeningPopup.bind(this);
     }
 
     handleChange(event) {
-        this.setState({value: event.target.value})
+        this.setState({value: event.target.value});
     }
-    
+
+    handleSubmit(e) {
+        e.preventDefault();
+        this.setState({openingPopup: true});
+    }
+
+    resetOpeningPopup() {
+        this.setState({openingPopup: false});
+    }
+
     render() {
         return (
-            <div className="App">
-                <Container>
+            <Container>
+                <form
+                    onSubmit={this.handleSubmit}
+                    className="form"
+                >
                     <div className="form-row">
                         <Input
                             onChange={this.handleChange}
@@ -28,9 +49,13 @@ class App extends Component {
                         />
                         <Button text="Submit" />
                     </div>
-                    <Result text={this.state.value} />
-                </Container>
-            </div>
+                </form>
+                <Result text={this.state.value} />
+                <Popup
+                    openingPopup={this.state.openingPopup}
+                    resetOpeningPopup={this.resetOpeningPopup}
+                />
+            </Container>
         );
     }
 }

@@ -1,7 +1,5 @@
-.App {
-    height: 100vh;
+body {
     background-color: #000;
-    color: #fff;
 }
 
 input[type="text"] {
@@ -31,15 +29,19 @@ button:focus {
 }
 
 .container {
+    height: 100vh;
+    color: #fff;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
-    height: 100%;
+}
+
+.form {
+    width: 50%;
 }
 
 .form-row {
-    width: 50%;
     display: flex; 
     justify-content: center;
 }
@@ -47,4 +49,27 @@ button:focus {
 .result {
     width: 50%;
     text-align: center;
+}
+
+.overlay {
+    display: none;
+    position: absolute;
+    background-color: rgba(255,255,255, .9);
+}
+
+.overlay.isOpen {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+}
+
+.popup {
+    margin: auto;
+    padding: 20px;
+    background-color: #fff;
+    color: #000;
+    min-width: 500px;
+    min-height: 300px;
 }
