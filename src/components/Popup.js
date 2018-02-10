@@ -31,7 +31,11 @@ class Popup extends React.Component {
                 className={this.state.isOpen ? "overlay isOpen" : "overlay"}
                 onClick={this.handleClick}
             >
-                <div className="popup">Test</div>
+                <div className="popup">
+                    <div className="popup__text">
+                        {this.props.data}
+                    </div>
+                </div>
             </div>
         );
     }

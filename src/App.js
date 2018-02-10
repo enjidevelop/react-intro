@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 
 import './App.css';
 import {
@@ -14,7 +15,8 @@ class App extends Component {
         super();
         this.state = {
             value: '',
-            openingPopup: false
+            openingPopup: false,
+            popupData: ''
         };
 
         this.handleChange = this.handleChange.bind(this);
@@ -29,10 +31,20 @@ class App extends Component {
     handleSubmit(e) {
         e.preventDefault();
         this.setState({openingPopup: true});
+        axios.post('/api/ping-pong', {data: this.state.value})
+            .then(({data}) => {
+                this.setState({popupData: data.data});
+            })
+            .catch(err => {
+                this.setState({popupData: err.message});
+            })
     }
 
     resetOpeningPopup() {
-        this.setState({openingPopup: false});
+        this.setState({
+            openingPopup: false,
+            popupData: ''
+        });
     }
 
     render() {
@@ -52,6 +64,7 @@ class App extends Component {
                 </form>
                 <Result text={this.state.value} />
                 <Popup
+                    data={this.state.popupData}
                     openingPopup={this.state.openingPopup}
                     resetOpeningPopup={this.resetOpeningPopup}
                 />

@@ -66,10 +66,16 @@ button:focus {
 }
 
 .popup {
+    display: flex;
     margin: auto;
     padding: 20px;
     background-color: #fff;
     color: #000;
     min-width: 500px;
     min-height: 300px;
+    text-align: center;
+}
+
+.popup__text {
+    margin: auto;
 }
